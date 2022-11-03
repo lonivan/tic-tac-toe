@@ -20,10 +20,10 @@ class Board extends React.Component {
 
   handleClick(i){
     const squares = this.state.squares.slice();
+    //do nothing if we already have a winner or the clicked square is already checked
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       squares: squares, 
@@ -45,7 +45,7 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = `Winner: $winner`;
+      status = `Winner: ${winner}`;
     } else {
       status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     }
